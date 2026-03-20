@@ -52,14 +52,27 @@ export default function ProjectCard({
           </span>
         </div>
 
+        {/* Hover arrow top-right */}
+        <div className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 group-hover:translate-x-0">
+          <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-white">
+              <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
         {/* Bottom overlay with text */}
         <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-20 z-10">
-          <h3 className="text-lg font-bold text-white font-display leading-tight">
-            {project.title}
-          </h3>
-          <span className="text-sm text-white/40 font-mono mt-1 block">
-            {project.year}
-          </span>
+          <div className="flex items-end justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-white font-display leading-tight">
+                {project.title}
+              </h3>
+              <span className="text-sm text-white/40 font-mono mt-1 block">
+                {project.year}
+              </span>
+            </div>
+          </div>
         </div>
       </Link>
     </motion.div>
