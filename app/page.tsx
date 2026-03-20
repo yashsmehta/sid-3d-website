@@ -1,65 +1,106 @@
-import Image from "next/image";
+import HeroScene from "@/components/HeroScene";
+import ProjectGrid from "@/components/ProjectGrid";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <HeroScene />
+      <ProjectGrid />
+
+      {/* About */}
+      <section id="about" className="py-28 border-t border-white/5">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold font-display">
+              About
+            </h2>
+            <div className="h-1 w-12 bg-accent rounded-full mt-4" />
+          </div>
+          <div className="grid md:grid-cols-5 gap-12 md:gap-16">
+            <div className="md:col-span-2 space-y-5 text-foreground/80 text-lg leading-relaxed">
+              <p>
+                I&apos;m Sid Mehta — a designer and creative developer focused on
+                building memorable digital experiences.
+              </p>
+              <p>
+                I work at the intersection of design, technology, and
+                storytelling. From brand systems to interactive 3D, I care about
+                craft, clarity, and making things that feel alive.
+              </p>
+            </div>
+            <div className="md:col-span-3 space-y-8">
+              <div>
+                <h3 className="text-xs font-mono text-accent uppercase tracking-widest mb-4">
+                  What I Do
+                </h3>
+                <div className="flex flex-wrap gap-2.5">
+                  {[
+                    "Brand Identity",
+                    "UI/UX Design",
+                    "Web Development",
+                    "3D & Motion",
+                    "Creative Direction",
+                    "Typography",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-4 py-2 text-sm rounded-lg border border-white/10 text-foreground/90 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/20 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xs font-mono text-accent uppercase tracking-widest mb-4">
+                  Tools
+                </h3>
+                <div className="flex flex-wrap gap-2.5">
+                  {[
+                    "Figma",
+                    "After Effects",
+                    "Blender",
+                    "React",
+                    "Three.js",
+                    "TypeScript",
+                  ].map((tool) => (
+                    <span
+                      key={tool}
+                      className="px-4 py-2 text-sm rounded-lg border border-white/10 text-foreground/90 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/20 transition-colors"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-32 border-t border-white/5 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-accent/[0.06] blur-[120px]" />
+        </div>
+        <div className="max-w-2xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-4xl md:text-6xl font-bold font-display mb-5">
+            Let&apos;s Work Together
+          </h2>
+          <p className="text-foreground/50 text-lg mb-10 leading-relaxed">
+            Have a project in mind or just want to say hello?
+            <br />
+            I&apos;d love to hear from you.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:hello@sidmehta.com"
+            className="inline-block px-10 py-4 rounded-full bg-accent hover:bg-accent-hover text-white font-medium text-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] hover:scale-105"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+            Say Hello
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
