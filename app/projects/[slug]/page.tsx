@@ -7,6 +7,20 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+function BackLink({ children }: { children: React.ReactNode }) {
+  return (
+    <Link
+      href="/#projects"
+      className="inline-flex items-center gap-2 text-sm text-foreground/40 hover:text-foreground transition-colors"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-current">
+        <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+      {children}
+    </Link>
+  );
+}
+
 export async function generateStaticParams() {
   const projects = getAllProjects();
   return projects.map((project) => ({ slug: project.slug }));
@@ -41,7 +55,6 @@ export default async function ProjectPage({ params }: Props) {
         className="relative flex items-end justify-center overflow-hidden"
         style={{ minHeight: "60vh" }}
       >
-        {/* Multi-layer gradient background */}
         <div
           className="absolute inset-0"
           style={{
@@ -54,16 +67,9 @@ export default async function ProjectPage({ params }: Props) {
         />
 
         <div className="relative z-10 text-center px-6 pb-16 pt-32 w-full max-w-4xl mx-auto">
-          {/* Back link */}
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-2 text-sm text-foreground/40 hover:text-foreground transition-colors mb-12"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-current">
-              <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Back to projects
-          </Link>
+          <div className="mb-12">
+            <BackLink>Back to projects</BackLink>
+          </div>
 
           <div className="flex items-center justify-center gap-4 mb-6">
             <span
@@ -97,17 +103,8 @@ export default async function ProjectPage({ params }: Props) {
           </p>
         </div>
 
-        {/* Bottom nav */}
         <div className="mt-20 pt-8 border-t border-white/5">
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-2 text-sm text-foreground/40 hover:text-foreground transition-colors"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-current">
-              <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Back to all projects
-          </Link>
+          <BackLink>Back to all projects</BackLink>
         </div>
       </section>
     </article>

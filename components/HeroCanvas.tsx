@@ -80,7 +80,7 @@ float fbm(vec3 p) {
   float value = 0.0;
   float amplitude = 0.5;
   float frequency = 1.0;
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 3; i++) {
     value += amplitude * snoise(p * frequency);
     frequency *= 2.0;
     amplitude *= 0.5;
@@ -167,10 +167,7 @@ function ShaderPlane({ mouse }: { mouse: React.RefObject<{ x: number; y: number 
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
       uResolution: {
-        value: new THREE.Vector2(
-          typeof window !== "undefined" ? window.innerWidth : 1920,
-          typeof window !== "undefined" ? window.innerHeight : 1080
-        ),
+        value: new THREE.Vector2(window.innerWidth, window.innerHeight),
       },
     }),
     []
@@ -216,6 +213,8 @@ function ShaderPlane({ mouse }: { mouse: React.RefObject<{ x: number; y: number 
 // HeroCanvas — the Canvas wrapper, default-exported for dynamic import
 // ---------------------------------------------------------------------------
 
+const cameraProps = { position: [0, 0, 1] as const };
+
 export default function HeroCanvas({
   mouse,
 }: {
@@ -226,7 +225,7 @@ export default function HeroCanvas({
       dpr={[1, 1.5]}
       gl={{ antialias: false, alpha: true }}
       style={{ position: "absolute", inset: 0 }}
-      camera={{ position: [0, 0, 1] }}
+      camera={cameraProps}
     >
       <ShaderPlane mouse={mouse} />
     </Canvas>

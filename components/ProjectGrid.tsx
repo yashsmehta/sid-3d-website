@@ -1,5 +1,3 @@
-"use client";
-
 import { getAllProjects } from "@/lib/projects";
 import ProjectCard from "@/components/ProjectCard";
 

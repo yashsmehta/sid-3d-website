@@ -17,7 +17,6 @@ export default function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
       viewport={{ once: true, margin: "100px" }}
-      style={{ willChange: "opacity, transform" }}
     >
       <Link
         href={`/projects/${project.slug}`}

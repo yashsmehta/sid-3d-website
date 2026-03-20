@@ -1,6 +1,27 @@
 import HeroScene from "@/components/HeroScene";
 import ProjectGrid from "@/components/ProjectGrid";
 
+const pillClass =
+  "px-4 py-2 text-sm rounded-lg border border-white/10 text-foreground/90 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/20 transition-colors";
+
+const skills = [
+  "Brand Identity",
+  "UI/UX Design",
+  "Web Development",
+  "3D & Motion",
+  "Creative Direction",
+  "Typography",
+];
+
+const tools = [
+  "Figma",
+  "After Effects",
+  "Blender",
+  "React",
+  "Three.js",
+  "TypeScript",
+];
+
 export default function Home() {
   return (
     <>
@@ -34,18 +55,8 @@ export default function Home() {
                   What I Do
                 </h3>
                 <div className="flex flex-wrap gap-2.5">
-                  {[
-                    "Brand Identity",
-                    "UI/UX Design",
-                    "Web Development",
-                    "3D & Motion",
-                    "Creative Direction",
-                    "Typography",
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-4 py-2 text-sm rounded-lg border border-white/10 text-foreground/90 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/20 transition-colors"
-                    >
+                  {skills.map((skill) => (
+                    <span key={skill} className={pillClass}>
                       {skill}
                     </span>
                   ))}
@@ -56,18 +67,8 @@ export default function Home() {
                   Tools
                 </h3>
                 <div className="flex flex-wrap gap-2.5">
-                  {[
-                    "Figma",
-                    "After Effects",
-                    "Blender",
-                    "React",
-                    "Three.js",
-                    "TypeScript",
-                  ].map((tool) => (
-                    <span
-                      key={tool}
-                      className="px-4 py-2 text-sm rounded-lg border border-white/10 text-foreground/90 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/20 transition-colors"
-                    >
+                  {tools.map((tool) => (
+                    <span key={tool} className={pillClass}>
                       {tool}
                     </span>
                   ))}
@@ -80,10 +81,7 @@ export default function Home() {
 
       {/* Contact */}
       <section id="contact" className="py-32 border-t border-white/5 relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-accent/[0.06] blur-[120px]" />
-        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-accent/[0.06] blur-[120px] pointer-events-none" />
         <div className="max-w-2xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold font-display mb-5">
             Let&apos;s Work Together
